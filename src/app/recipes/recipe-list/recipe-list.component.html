@@ -7,6 +7,6 @@
 
 <div class="container">
     <a href="#" *ngFor="let recipe of recipes" class="list-group-item">
-        <app-recipe-item [recipe]="recipe" (loadItemDetails)="showDetails($event)"></app-recipe-item>
+        <app-recipe-item [recipe]="recipe" ></app-recipe-item>
     </a>
 </div>

@@ -1,17 +1,35 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Ingredient } from 'src/shared/ingredients.model';
 import { Recipe } from './recipe.model';
-
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-  private recipes: Recipe[] = [ new Recipe("A test recipe","this is a testing recipe","https://th.bing.com/th/id/OIP.aclJvvwAnYlHcv5vAw706AHaLH?pid=ImgDet&rs=1"),
-                        new Recipe ("second test","second testing","https://th.bing.com/th/id/OIP.aclJvvwAnYlHcv5vAw706AHaLH?pid=ImgDet&rs=1")];
-  constructor() { }
+  private recipes: Recipe[] = [ 
+    new Recipe("Meat burger",
+    "Burger with oozing cheese and meat",
+    "https://th.bing.com/th/id/OIP.aclJvvwAnYlHcv5vAw706AHaLH?pid=ImgDet&rs=1",
+    [
+      new Ingredient("meat",1),
+      new Ingredient("corn flour",12)
+    ]),
+  new Recipe ("Aloo ka paratha",
+  "Best breakfast",
+  "https://th.bing.com/th/id/OIP.aclJvvwAnYlHcv5vAw706AHaLH?pid=ImgDet&rs=1",
+  [
+    new Ingredient("aloo",5),
+    new Ingredient("masale",5)
+  ]
+  )
+];
+  constructor(private _shoppingService:ShoppingListService) { }
+  
+  selectedRecipe = new EventEmitter<Recipe>();
 
   getRecipes(){
     return this.recipes.slice();
-    
     //ye .splice not sure why added
   }
+  
 }
