@@ -1,7 +1,7 @@
-<h2>Recipe name</h2>
+<h2>{{currentRecipe.name}}</h2>
 <div class="row">
     <div class="col-xs-12">
-        Description
+        {{currentRecipe.description}}
     </div>
 </div>
 <div class="row">
@@ -9,15 +9,16 @@
         Ingredients
     </div>
 </div>
-<div class="btn-group">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+<div class="btn-group open">
+    <button type="button" class="btn btn-primary dropdown-toggle" 
+    data-bs-toggle="dropdown" aria-expanded="false">
       Action
     </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <ul class="dropdown-menu open">
+      <li><a class="dropdown-item" href="#">To shopping list</a></li>
+      <li><a class="dropdown-item" href="#">Edit recipe</a></li>
+      <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
+      <li><a class="dropdown-item" href="#">Delete recipe</a></li>
     </ul>
-  </div>
+</div>
