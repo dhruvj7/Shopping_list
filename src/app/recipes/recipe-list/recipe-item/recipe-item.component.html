@@ -1,9 +1,11 @@
-    <div class="row" (click)="loadDetails()">
+<a  class="list-group-item "routerLinkActive="activeLink" [routerLink]="[index]" style="cursor: pointer;">
+    <div class="row" >
         <div class="col border" >
             <h5>{{recipe.name}}</h5> 
             <p>{{recipe.description}}</p>
         </div>
-        <div class="col">
+        <div class="col-3">
             <img [src]="recipe.imagePath" style="max-height: 85px;" class="image-responsive ">
         </div>
-    </div> <br>
+    </div>
+</a> <br>

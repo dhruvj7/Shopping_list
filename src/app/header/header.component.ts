@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component,  OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,19 +8,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router :Router) { }
 
   ngOnInit(): void {
-  }
-  @Output() recipeFlag = new EventEmitter();
-  @Output() shoppingFlag = new EventEmitter();
-
-
-  loadRecipes(){
-    this.recipeFlag.emit({isRecipeVisible:true,isShoppingListVisible:false});
-  }
-  loadShoppingList(){
-    this.shoppingFlag.emit({isRecipeVisible:false,isShoppingListVisible:true});
   }
 
 }

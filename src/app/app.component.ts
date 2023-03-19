@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'shopping_list';
 
-  isShoppingListVisible :boolean=false;
-  isRecipeVisible:boolean=true;
+  // isShoppingListVisible :boolean=false;
+  // isRecipeVisible:boolean=true;
 
-  visibility(event:{isRecipeVisible:boolean,isShoppingListVisible:boolean}){
-    this.isRecipeVisible=event.isRecipeVisible;
-    this.isShoppingListVisible=event.isShoppingListVisible;
-  }
+  // visibility(event:{isRecipeVisible:boolean,isShoppingListVisible:boolean}){
+  //   this.isRecipeVisible=event.isRecipeVisible;
+  //   this.isShoppingListVisible=event.isShoppingListVisible;
+  // }
 }

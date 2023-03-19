@@ -15,13 +15,13 @@
 <div class="btn-group open">
     <button type="button" class="btn btn-primary dropdown-toggle" 
     data-bs-toggle="dropdown" aria-expanded="false">
-      Action
+      Manage
     </button>
     <ul class="dropdown-menu open">
-      <li><a class="dropdown-item" href="#" (click)="addToShoppingList()">To shopping list</a></li>
-      <li><a class="dropdown-item" href="#">Edit recipe</a></li>
+      <li><a class="dropdown-item" (click)="addToShoppingList()" style="cursor:pointer;">To shopping list</a></li>
+      <li><a class="dropdown-item" style="cursor:pointer;" routerLink="edit">Edit recipe</a></li>
       <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
       <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Delete recipe</a></li>
+      <li><a class="dropdown-item" style="cursor:pointer;">Delete recipe</a></li>
     </ul>
 </div>

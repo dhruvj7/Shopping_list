@@ -3,10 +3,6 @@
         <app-recipe-list></app-recipe-list>
     </div>
     <div class="col-md-7">
-        <div *ngIf="!currentRecipe"><h4>Please select a recipe to display its details</h4></div>
-        <app-recipe-detail 
-        *ngIf="currentRecipe" 
-        [currentRecipe]="currentRecipe">
-    </app-recipe-detail>
+        <router-outlet></router-outlet>
     </div>
 </div>

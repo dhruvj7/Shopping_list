@@ -29,7 +29,11 @@ export class RecipeService {
 
   getRecipes(){
     return this.recipes.slice();
-    //ye .splice not sure why added
+    //slice added to pass a copy of array
+  }
+
+  findRecipe(index:number){
+    return this.recipes[index];
   }
   
 }
