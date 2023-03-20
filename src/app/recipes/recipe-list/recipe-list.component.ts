@@ -15,6 +15,9 @@ recipes: Recipe[] =[];
   
   ngOnInit(): void {
     this.recipes=this._recipeService.getRecipes();
+    this._recipeService.recipesChanged.subscribe((newRecipes)=>{
+      this.recipes=newRecipes;
+    })
   }
   
   showDetails(data){

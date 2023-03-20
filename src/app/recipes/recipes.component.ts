@@ -10,9 +10,9 @@ export class RecipesComponent implements OnInit {
   constructor(private _recipeService:RecipeService) { }
 
   ngOnInit(): void {
-    this._recipeService.selectedRecipe.subscribe(
-      (recipeSelected)=>{ this.currentRecipe=recipeSelected}
-      )
+    // this._recipeService.selectedRecipe.subscribe(
+    //   (recipeSelected)=>{ this.currentRecipe=recipeSelected}
+    //   )
   }
-  currentRecipe:Recipe;
+  // currentRecipe:Recipe;
 }
