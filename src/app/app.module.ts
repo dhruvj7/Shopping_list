@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -37,7 +39,8 @@ import { RecipeService } from './recipes/recipe.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ShoppingListService ,RecipeService], //providers array show services which will be injected in another service
   bootstrap: [AppComponent]

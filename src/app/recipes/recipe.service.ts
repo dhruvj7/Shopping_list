@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import {Subject} from 'rxjs';
 import { Ingredient } from 'src/shared/ingredients.model';
 import { Recipe } from './recipe.model';
 @Injectable({
   providedIn: 'root'
 })
-export class RecipeService {
+export class RecipeService{
   private recipes: Recipe[] = [ 
     new Recipe("Meat burger",
     "Burger with oozing cheese and meat",
@@ -45,6 +45,10 @@ export class RecipeService {
   }
   deleteRecipe(index:number){
     this.recipes.splice(index,1);
+    this.recipesChanged.next(this.recipes);
+  }
+  setRecipes(newRecipes:Recipe[]){
+    this.recipes =newRecipes;
     this.recipesChanged.next(this.recipes);
   }
   
