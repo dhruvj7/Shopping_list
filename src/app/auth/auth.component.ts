@@ -49,4 +49,8 @@ export class AuthComponent implements OnInit {
     this.isLoaderVisible=false;
   }
 
+  closeAlert(){
+    this.errorMessage=null;
+  }
+
 }

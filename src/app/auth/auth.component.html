@@ -1,9 +1,12 @@
 <div *ngIf="isLoaderVisible" style="text-align:center ;">
     <app-loader></app-loader>
 </div>
-<div *ngIf="errorMessage" class="danger">{{errorMessage}}</div>
+
+<app-alert *ngIf="errorMessage" [message]="errorMessage"
+(close)="closeAlert()"></app-alert>
+
 <br>
-<div class="row" *ngIf="!isLoaderVisible">
+<div class="row" *ngIf="!isLoaderVisible" >
     <div class="col-12">
         <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
             <div class="form-group">
