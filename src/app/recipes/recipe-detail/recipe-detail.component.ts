@@ -32,7 +32,7 @@ export class RecipeDetailComponent implements OnInit {
 
   delete(){
     this._recipeService.deleteRecipe(this.id);
-    this.router.navigate(['..']); //going one level up
+    this.router.navigate(['recipes']); //going one level up
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component,  OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { DataStorageService } from 'src/shared/data-storage.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,17 @@ import { DataStorageService } from 'src/shared/data-storage.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private dataStorage : DataStorageService) { }
+  isAuthenticated:boolean;
+
+  constructor(private dataStorage : DataStorageService,private authService : AuthService) { }
 
   ngOnInit(): void {
+    if(localStorage.userData){
+      this.isAuthenticated=true;
+    }
+    this.authService.user.subscribe((user)=>{
+      this.isAuthenticated = !!user;
+    })
   }
 
   saveRecipes(){
@@ -19,6 +28,9 @@ export class HeaderComponent implements OnInit {
   }
   fetchRecipes(){
     this.dataStorage.fetchRecipes();
+  }
+  logout(){
+    this.authService.logout();
   }
 
 }

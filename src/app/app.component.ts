@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 
 @Component({   //decorator
   selector: 'app-root',
@@ -7,12 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shopping_list';
+  constructor(private authService:AuthService){}
 
-  // isShoppingListVisible :boolean=false;
-  // isRecipeVisible:boolean=true;
-
-  // visibility(event:{isRecipeVisible:boolean,isShoppingListVisible:boolean}){
-  //   this.isRecipeVisible=event.isRecipeVisible;
-  //   this.isShoppingListVisible=event.isShoppingListVisible;
-  // }
+  ngOnInit(){
+    this.authService.autoLogin();
+  }
 }

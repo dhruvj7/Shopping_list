@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -19,7 +19,9 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipe.service';
-
+import { AuthComponent } from './auth/auth.component';
+import { LoaderComponent } from './loader/loader.component';
+import { DataStorageService } from 'src/shared/data-storage.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { RecipeService } from './recipes/recipe.service';
     ShoppingEditComponent,
     DropDownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ import { RecipeService } from './recipes/recipe.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService ,RecipeService], //providers array show services which will be injected in another service
+  providers: [ShoppingListService ,RecipeService,DataStorageService], //providers array show services which will be injected in another service
   bootstrap: [AppComponent]
 })
 export class AppModule { }
