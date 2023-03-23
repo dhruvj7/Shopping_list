@@ -5,6 +5,8 @@ import { Subject } from 'rxjs';
 import{tap} from 'rxjs/operators'
 import { Router } from '@angular/router';
 
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +21,7 @@ export class AuthService {
   user = new Subject<User>();
   
   signup(email:string,password:string){
-    return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDAWYy--ew7qXEpajpHzKucK5iZ4avWjVo',
+    return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+ environment.firebaseApiKey,
     {
       email: email,
       password:password,
@@ -32,7 +34,7 @@ export class AuthService {
   }
 
   signin(email:string,password:string){
-    return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDAWYy--ew7qXEpajpHzKucK5iZ4avWjVo',
+    return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+environment.firebaseApiKey,
     {
       email: email,
       password:password,
