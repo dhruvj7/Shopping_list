@@ -8,8 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+
 import { DropDownDirective } from 'src/shared/drop-down.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 
@@ -20,13 +19,13 @@ import { DataStorageService } from 'src/shared/data-storage.service';
 import { AlertComponent } from './alert/alert.component';
 import { RecipeModule } from './recipes/recipe.module';
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
+import { ShoppingRoutingModule } from './shopping-list/shopping-routing.module';
+import { ShoppingModule } from './shopping-list/shopping.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     DropDownDirective,
     AuthComponent,
     LoaderComponent,
@@ -39,9 +38,11 @@ import { RecipesRoutingModule } from './recipes/recipes-routing.module';
     ReactiveFormsModule,
     HttpClientModule,
     RecipeModule,
-    RecipesRoutingModule
+    RecipesRoutingModule,
+    ShoppingRoutingModule,
+    ShoppingModule
   ],
-  providers: [ShoppingListService ,RecipeService,DataStorageService], //providers array show services which will be injected in another service
+  providers: [], //providers array show services which will be injected in another service
   bootstrap: [AppComponent]
 })
 export class AppModule { }

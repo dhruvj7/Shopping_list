@@ -14,7 +14,6 @@ export class AuthService {
   constructor(private http : HttpClient, private router:Router) { }
 
   ngOnInit(){
-
   }
   
   user = new Subject<User>();
@@ -59,6 +58,17 @@ export class AuthService {
     const loadUser = new User(userData.email,userData.id,userData._token,new Date (userData.tokenExpirationDate));
     if(loadUser.token){
       this.user.next(loadUser);
+    }
+  }
+
+  autoLogout(){
+      if(localStorage.userData){
+      const expirationDate:Date=new Date(JSON.parse(localStorage.userData).expirationTime);
+      const newDate =new Date();
+      if(expirationDate <= newDate){
+        this.logout();
+      }
+      console.log("expiration date",expirationDate , "current date",newDate)
     }
   }
 
