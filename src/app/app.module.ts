@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -17,8 +17,11 @@ import { AlertComponent } from './alert/alert.component';
 
 import { RecipeModule } from './recipes/recipe.module';
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
-import { ShoppingRoutingModule } from './shopping-list/shopping-routing.module';
 import { ShoppingModule } from './shopping-list/shopping.module';
+import { ShoppingRoutingModule } from './shopping-list/shopping-routing.module';
+
+import { StoreModule } from '@ngrx/store';
+import { shoppingListReducer } from './shopping-list/ngrx-store/shoppingListReducer';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { ShoppingModule } from './shopping-list/shopping.module';
     RecipeModule,
     RecipesRoutingModule,
     ShoppingRoutingModule,
-    ShoppingModule
+    ShoppingModule,
+    StoreModule.forRoot({shoppingList:shoppingListReducer})
   ],
   providers: [], 
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@
         <!-- <app-shopping-edit></app-shopping-edit> -->
         <router-outlet></router-outlet>
         <br>
-        <ul class="list-group" *ngFor="let item of ingredients; let id=index">
+        <ul class="list-group" *ngFor="let item of (ingredients|async).ingredients; let id=index">
             <li class="border">
                 <a style="cursor: pointer;" class="list-group-item" (click)="onEditItem(id)">
                     <div class="row">
