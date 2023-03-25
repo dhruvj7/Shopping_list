@@ -4,7 +4,9 @@ import { ShoppingListService } from '../shopping-list.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
+import * as fromShoppingList from '../ngrx-store/shoppingListReducer';
 import  * as shoppingListAction from '../ngrx-store/shopping-list.actions';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
@@ -13,7 +15,8 @@ import  * as shoppingListAction from '../ngrx-store/shopping-list.actions';
 export class ShoppingEditComponent implements OnInit {
 
   constructor(private _shoppingService : ShoppingListService , 
-              private store :Store<{shoppingList : {ingredients : Ingredient[]}}>) { }
+              private store :Store<fromShoppingList.AppState>, 
+              private router :Router) { }
 
   ing:Ingredient;
   shoppingForm : FormGroup;
@@ -28,18 +31,22 @@ export class ShoppingEditComponent implements OnInit {
       amount:new FormControl('',[Validators.required , Validators.pattern('^[1-9]+[0-9]*$')])
     })
 
-    this._shoppingService.startedEditing
-    .subscribe((index:number)=>{
-      this.editMode=true;
-      this.editItemIndex=index;
-      this.editedItem = this._shoppingService.getIngredient(index);
-      this.shoppingForm.setValue({
-        name:this.editedItem.name,
-        amount:this.editedItem.amount
-      });
-    })
-
-    
+    this.store.select('shoppingList').subscribe(
+      (stateData)=>{
+        if(stateData.editedIngredientIndex > -1){
+          this.editMode= true;
+          this.editItemIndex=stateData.editedIngredientIndex;
+          this.editedItem = stateData.editedIngredient;
+          this.shoppingForm.setValue({
+            name:this.editedItem.name,
+            amount:this.editedItem.amount
+          })
+          this.router.navigate(['shoppingList','edit']);
+        }else{
+          this.editMode=false;
+        }
+      }
+    )
   }
 
   onSubmit(){
@@ -66,6 +73,10 @@ export class ShoppingEditComponent implements OnInit {
     // this._shoppingService.deleteIngrideint(this.editItemIndex);
     this.store.dispatch(new shoppingListAction.deleteIngredient(this.editItemIndex))
     this.resetForm();
+  }
+
+  ngOnDestroy(){
+    this.store.dispatch(new shoppingListAction.cancelEdit());
   }
 
 }
