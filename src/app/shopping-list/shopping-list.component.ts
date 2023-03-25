@@ -4,8 +4,9 @@ import { Ingredient } from 'src/shared/ingredients.model';
 import { ShoppingListService } from './shopping-list.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+
 import * as shoppingListAction from './ngrx-store/shopping-list.actions';
-import * as fromShoppingList from './ngrx-store/shoppingListReducer';
+import * as fromApp from '../store/app.reducer';
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
@@ -17,7 +18,7 @@ export class ShoppingListComponent implements OnInit {
   constructor(
     private _shoppingService :ShoppingListService,
     private _router : Router, 
-    private store :Store<fromShoppingList.AppState>, //what does my reducer function yields key:value
+    private store :Store<fromApp.AppState>, //what does my reducer function yields key:value
     ) { }
 
   ngOnInit(): void {
@@ -34,6 +35,8 @@ export class ShoppingListComponent implements OnInit {
     // this._shoppingService.startedEditing.next(id);
 
     this.store.dispatch(new shoppingListAction.startEdit(id));
+    this._router.navigate(['shoppingList','edit']);
+
   }
 
 }

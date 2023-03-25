@@ -21,7 +21,7 @@ import { ShoppingModule } from './shopping-list/shopping.module';
 import { ShoppingRoutingModule } from './shopping-list/shopping-routing.module';
 
 import { StoreModule } from '@ngrx/store';
-import { shoppingListReducer } from './shopping-list/ngrx-store/shoppingListReducer';
+import * as fromApp from './store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { shoppingListReducer } from './shopping-list/ngrx-store/shoppingListRedu
     RecipesRoutingModule,
     ShoppingRoutingModule,
     ShoppingModule,
-    StoreModule.forRoot({shoppingList:shoppingListReducer})
+    StoreModule.forRoot(fromApp.AppReducer)
   ],
   providers: [], 
   bootstrap: [AppComponent]

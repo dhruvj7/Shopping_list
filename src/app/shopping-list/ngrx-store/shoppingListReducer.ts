@@ -6,9 +6,6 @@ export interface State{
     editedIngredient : Ingredient;
     editedIngredientIndex : number;
 }
-export interface AppState{
-    shoppingList : State;
-}
 const initialState =
 {
     ingredients :[
@@ -32,32 +29,32 @@ export function shoppingListReducer(state:State=initialState, action:any){
             ingredients : [...state.ingredients, ...action.payload] //spread operator to pull out ingridient from ingrideint array otherwise it will create a nested array
 
             }
-            case shoppingListAction.UPDATE_INGREDIENT :
-                const ingredient = state.ingredients[action.payload.index]
+        case shoppingListAction.UPDATE_INGREDIENT :
+                const ingredient = state.ingredients[state.editedIngredientIndex]
                 const updatedIngredient={
                     ... ingredient,
-                    ... action.payload.ingredient
+                    ... action.payload
                 }
                 const updatedIngredients=[...state.ingredients];
-                updatedIngredients[action.payload.index]= updatedIngredient;
+                updatedIngredients[state.editedIngredientIndex]= updatedIngredient;
             return{
                 ... state,
                 ingredients : updatedIngredients
             }
-            case shoppingListAction.DELETE_INGREDIENT :
+        case shoppingListAction.DELETE_INGREDIENT :
             return{
                 ... state,
                 ingredients: state.ingredients.filter((ig,igIndex)=>{
-                    return igIndex!=action.payload;
+                    return igIndex!=state.editedIngredientIndex;
                 })
             } ;
-            case shoppingListAction.START_EDIT :
+        case shoppingListAction.START_EDIT :
             return{
                     ... state,
                     editedIngredient : {...state.ingredients[action.payload]},
                     editedIngredientIndex:action.payload
                 };
-            case shoppingListAction.CANCEL_EDIT :
+        case shoppingListAction.CANCEL_EDIT :
             return{
                 ... state,
                 editedIngredient:null,

@@ -7,18 +7,21 @@ import { Router } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
 
+import { Store } from '@ngrx/store';
+import * as authActions from './ngrx-store/auth.actions';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
 
-  constructor(private http : HttpClient, private router:Router) { }
+  constructor(private http : HttpClient, private router:Router,private store:Store) { }
 
   ngOnInit(){
   }
   
-  user = new Subject<User>();
+  // user = new Subject<User>();
   
   signup(email:string,password:string){
     return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+ environment.firebaseApiKey,
@@ -48,18 +51,19 @@ export class AuthService {
 
   autoLogin(){
     const userData: {
-      email:string, 
+      username:string, 
       id:string,
       _token:string,
-      tokenExpirationDate:string
+      expirationTime:string
 
     } = JSON.parse(localStorage.getItem('userData'));
     if(!userData){
       return;
     }
-    const loadUser = new User(userData.email,userData.id,userData._token,new Date (userData.tokenExpirationDate));
+    const loadUser = new User(userData.username,userData.id,userData._token,new Date (userData.expirationTime));
     if(loadUser.token){
-      this.user.next(loadUser);
+      this.store.dispatch(new authActions.login({email:loadUser.username , id:loadUser.id, 
+        token:loadUser.token , expirationDate:loadUser.expirationTime}))
     }
   }
 
@@ -75,14 +79,19 @@ export class AuthService {
   }
 
   private handleAuthetication(resData:any){
-    const expirationTime = new Date(new Date().getTime() + +resData.expiresIn*1000)
-    const newUser= new User(resData.email,resData.localId, resData.idToken,expirationTime);
-    this.user.next(newUser);
+    const expirationDate = new Date(new Date().getTime() + +resData.expiresIn*1000)
+    const newUser= new User(resData.email,resData.localId, resData.idToken,expirationDate);
+    
+    this.store.dispatch(new authActions.login({email:resData.email,id:resData.localId, 
+                                                token:resData.idToken,expirationDate:expirationDate}))
+
+    // this.user.next(newUser);
     localStorage.setItem('userData',JSON.stringify(newUser));
   }
 
   logout(){
-    this.user.next(null);
+    // this.user.next(null);
+    this.store.dispatch(new authActions.logout());
     this.router.navigate(['auth']);
     localStorage.clear();
   }
