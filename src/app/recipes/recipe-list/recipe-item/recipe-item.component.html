@@ -1,11 +1,17 @@
-<a  class="list-group-item "routerLinkActive="activeLink" [routerLink]="[index]" style="cursor: pointer;">
-    <div class="row" >
-        <div class="col border" >
-            <h5>{{recipe.name}}</h5> 
-            <p>{{recipe.description}}</p>
-        </div>
-        <div class="col-3">
-            <img [src]="recipe.imagePath" style="max-height: 85px;" class="image-responsive ">
-        </div>
-    </div>
-</a> <br>
+<div class="selectedItem">
+    <a  class="list-group-item" routerLinkActive="activeLink" [routerLink]="[index]" style="cursor: pointer;">
+        <div class="container">
+            <div class="row item">
+
+                <div class="col-9" >
+                    <h5 class="itemHeading">{{recipe.name}}</h5> 
+                    <strong>Description- </strong>
+                    <span class="description">{{recipe.description}}</span>
+                </div>
+                <div class="col-3">
+                    <img [src]="recipe.imagePath" class="image-responsive" style="border-radius: 100%;">
+                </div>
+            </div>
+        </div>   
+    </a> 
+</div>

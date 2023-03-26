@@ -8,18 +8,18 @@ import { Recipe } from './recipe.model';
 export class RecipeService{
   private recipes: Recipe[] = [ 
     new Recipe("Meat burger",
-    "Burger with oozing cheese and meat",
-    "https://th.bing.com/th/id/OIP.aclJvvwAnYlHcv5vAw706AHaLH?pid=ImgDet&rs=1",
+    "A culinary creation with a perfectly seasoned patty made from the finest quality beef, spices and lots of cheese",
+    "https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/5:4/w_3129,h_2503,c_limit/Smashburger-recipe-120219.jpg",
     [
       new Ingredient("meat",1),
       new Ingredient("corn flour",12)
     ]),
   new Recipe ("Aloo ka paratha",
-  "Best breakfast",
-  "https://th.bing.com/th/id/OIP.aclJvvwAnYlHcv5vAw706AHaLH?pid=ImgDet&rs=1",
+  "Aloo ka paratha is a delicious and popular Indian flatbread made from unleavened dough stuffed with a spiced mashed potato filling.",
+  "https://pipingpotcurry.com/wp-content/uploads/2022/11/Aloo-Paratha-Piping-Pot-Curry.jpg",
   [
-    new Ingredient("aloo",5),
-    new Ingredient("masale",5)
+    new Ingredient("potato",5),
+    new Ingredient("ghee",1)
   ]
   )
 ];
@@ -29,7 +29,6 @@ export class RecipeService{
 
   getRecipes(){
     return this.recipes.slice();
-    //slice added to pass a copy of array
   }
 
   findRecipe(index:number){

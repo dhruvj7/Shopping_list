@@ -1,3 +1,25 @@
 .activeLink{
-    background-color: #d6d3d2;
+    background-color: #d6d3d2;   
+}
+.container{
+    padding: 15px;
+}
+.list-group-item{
+    border: 1px dashed black;
+    border-radius: 7px;
+}
+.itemHeading{
+    font-family: 'Montserrat', sans-serif;
+}
+.selectedItem{
+    font-family:cursive;
+}
+.description{
+    color: rgb(43, 41, 41);
+}
+
+img{
+    width: 100%;
+    height: auto;
+    position: relative;
 }

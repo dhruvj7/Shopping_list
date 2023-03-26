@@ -23,7 +23,9 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit(): void {
     this.ingredients=this.store.select('shoppingList');
+    this.ingredients.subscribe((data)=>{if (data.ingredients.length!=0){this.isEmpty=false}})
   }
+  isEmpty : boolean=true;
   editShoppingList(){
     // this._router.navigate(['edit'],{relativeTo:this.route})
     // console.log(this.route)
@@ -37,6 +39,10 @@ export class ShoppingListComponent implements OnInit {
     this.store.dispatch(new shoppingListAction.startEdit(id));
     this._router.navigate(['shoppingList','edit']);
 
+  }
+
+  download(){
+    
   }
 
 }

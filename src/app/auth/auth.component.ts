@@ -28,10 +28,12 @@ export class AuthComponent implements OnInit {
     }
   }
 
+ 
   switchMode(){
     this.isLoginMode = !this.isLoginMode;
   }
   onSubmit(authForm : NgForm){
+    console.log(authForm);
     this.isLoaderVisible=true;
 
     if(!this.isLoginMode)
@@ -40,14 +42,8 @@ export class AuthComponent implements OnInit {
       this.authObs = this.authService.signin(authForm.controls.email.value,authForm.controls.password.value)
 
 
-      // this.store.select('auth')
-      // .subscribe((data)=>{
-      //   console.log("data-",data);
-      // })
-
     this.authObs.subscribe(
       (data)=>{console.log("success",data) 
-      // this.authService.isLogin=true;  
       this.router.navigate(['/recipes']);
     },
       (error)=>{console.log("error",error.error.error.message ) ; 

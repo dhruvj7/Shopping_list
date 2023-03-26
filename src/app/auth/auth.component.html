@@ -3,34 +3,58 @@
 </div>
 
 <app-alert *ngIf="errorMessage" [message]="errorMessage"
-(close)="closeAlert()"></app-alert>
-
+    (close)="closeAlert()">
+</app-alert>
 <br>
-<div class="row" *ngIf="!isLoaderVisible" >
-    <div class="col-12">
-        <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control"
-                style="width: 16rem;" ngModel required>
-            </div><br>
-            <div class="form-group">
-                <label for="email">Password</label>
-                <input type="password" id="password" name="password" class="form-control"
-                style="width: 16rem;" ngModel 
-                required
-                minlength="6">
-            </div><br>
-            <div class="row">
-                <div class="col-3">
-                    <button class="btn btn-primary" 
-                    type="submit" [disabled]="authForm.invalid">{{isLoginMode?'Login':'Sign Up'}}</button>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-primary"
-                     type="button" (click)="switchMode()"> Switch to {{!isLoginMode?'Login':'Sign Up'}}</button>
-                </div>
+<div class="row">
+<!-- left column -->
+    <div class="col-md-8">
+        <div class="container">
+            <img class="image" src="https://www.simplyrecipes.com/thmb/nFtRprjs_Jydr4iKK21PPwgvCVY=/1200x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__03__Salad-Mint-Pesto-LEAD-1-f3ced41178a14c5e8904a27daf6dbd6d.jpg" alt="Image">
+            <div class="content">
+            <p>What's cooking?</p>
+            <br>
+            <p>Signup for one stop solution to get amazing recipes and store your own !</p>
             </div>
-        </form>
+      </div>  
     </div>
-</div>
+  
+    <div class="col-md-4">
+<!-- right column - form --> <br><br>
+      <div class="form-container">
+        <h2>Login Form</h2>
+        <div class="row" *ngIf="!isLoaderVisible" >
+            <div class="col-12">
+                <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control"
+                        style="width: 16rem;" ngModel required email>
+                        <div *ngIf="authForm.invalid && authForm.controls.email.touched && authForm.controls['email'].errors" 
+                        class="text-danger errors"> Enter valid email</div>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="email">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"
+                        style="width: 16rem;" ngModel 
+                        required
+                        minlength="6">
+                        <div *ngIf=" authForm.invalid && authForm.controls.password.touched && authForm.controls.password.errors" 
+                        class="text-danger errors">Password should be of atleast 6 characters</div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-5">
+                            <button class="btn btn-primary" 
+                            type="submit" [disabled]="authForm.invalid">{{isLoginMode?'Login':'Sign Up'}}</button>
+                        </div>
+                        <div class="col-7">
+                            <button class="btn btn-primary"
+                             type="button" (click)="switchMode()"> Switch to {{!isLoginMode?'Login':'Sign Up'}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

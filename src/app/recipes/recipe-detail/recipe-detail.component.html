@@ -1,30 +1,32 @@
-<br><h2>{{currentRecipe.name}}</h2>
-<div>
-    <img [src]="currentRecipe.imagePath" alt="" height="200px">
-</div><br>
-<div class="row">
-    <div class="col-xs-12">
-        {{currentRecipe.description}}
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <b>Ingredients Required</b>
-        <div *ngFor="let recipeItem of currentRecipe.ingredients">
-            {{recipeItem.name}} - {{recipeItem.amount}}
+
+<div class="container">
+    <h2 class="recipeName">{{currentRecipe.name}}</h2><br>
+    <div>
+        <img [src]="currentRecipe.imagePath" alt="" height="200px">
+    </div><br>
+    <div class="row">
+        <div class="col-xs-12">
+            <b>Description</b> - {{currentRecipe.description}}
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-xs-12">
+            <b>Ingredients Required</b>
+            <ul *ngFor="let recipeItem of currentRecipe.ingredients">
+                <li>{{recipeItem.name}} - {{recipeItem.amount}}</li>
+            </ul>
         </div>
     </div>
-</div>
-<div class="btn-group open">
-    <button type="button" class="btn btn-primary dropdown-toggle" 
-    data-bs-toggle="dropdown" aria-expanded="false">
-      Manage
-    </button>
-    <ul class="dropdown-menu open">
-      <li><a class="dropdown-item" (click)="addToShoppingList()" style="cursor:pointer;">To shopping list</a></li>
-      <li><a class="dropdown-item" style="cursor:pointer;" routerLink="edit">Edit recipe</a></li>
-      <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" style="cursor:pointer;" (click)="delete()">Delete recipe</a></li>
-    </ul>
+    <div class="btn-group open">
+        <button type="button" class="btn btn-primary dropdown-toggle" 
+        data-bs-toggle="dropdown" aria-expanded="false">
+        More
+        </button>
+        <ul class="dropdown-menu open">
+        <li><a class="dropdown-item" (click)="addToShoppingList()" style="cursor:pointer;">Add to shopping list</a></li>
+        <li><a class="dropdown-item" style="cursor:pointer;" routerLink="edit">Edit recipe</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" style="cursor:pointer;" (click)="delete()">Delete recipe</a></li>
+        </ul>
+    </div>
 </div>
