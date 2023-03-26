@@ -1,10 +1,9 @@
 import { Component,  OnInit} from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { DataStorageService } from 'src/shared/data-storage.service';
 import { AuthService } from '../auth/auth.service';
 import * as fromApp from '../store/app.reducer';
-import { map, pipe } from 'rxjs';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-header',

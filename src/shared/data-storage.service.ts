@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Recipe } from 'src/app/recipes/recipe.model';
 import {map} from 'rxjs/operators'
 import { RecipeService } from 'src/app/recipes/recipe.service';
@@ -27,7 +27,11 @@ export class DataStorageService{
 
   fetchRecipes(){
     const tokenId=JSON.parse(localStorage.getItem('userData'))._token;
-    this.http.get<Recipe[]>('https://shopping-list-8dbc3-default-rtdb.firebaseio.com/recipes.json?auth='+tokenId,)
+    this.http.get<Recipe[]>('https://shopping-list-8dbc3-default-rtdb.firebaseio.com/recipes.json',{
+      params:new HttpParams()
+      .set('auth',tokenId)
+      // .set('$uid',uid)
+    })
     .pipe(
       map(recipes => {   //rxjs operator
         return recipes.map (recipe=>{   //operator for array , parse each element in array
