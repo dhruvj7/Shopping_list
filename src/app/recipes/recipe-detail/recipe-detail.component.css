@@ -9,3 +9,8 @@ a{
 .recipeName{
     font-weight: bold;
 }
+@media screen and (max-width: 600px) {
+    .container {
+      font-family:Verdana, Tahoma, sans-serif
+    }
+  }

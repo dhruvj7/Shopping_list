@@ -18,6 +18,8 @@
                             id="name"
                             class="form-control"
                             formControlName="name">
+                            <div *ngIf="recipeForm.invalid && recipeForm.controls.name.touched && recipeForm.controls['name'].errors" 
+                            class="text-danger errors">Name cannot be empty</div>
                         </div>
                     </div>
                 </div><br>
@@ -45,6 +47,8 @@
                             id="description"
                             class="form-control"
                             formControlName="description"></textarea>
+                            <div *ngIf="recipeForm.invalid && recipeForm.controls.description.touched && recipeForm.controls['description'].errors" 
+                            class="text-danger errors">Description cannot be empty</div>
                         </div>
                     </div>
                 </div><br>
@@ -60,7 +64,7 @@
                             </div>
                             <div class="col-3" style="width: 100px;">
                                 <input type="number" 
-                                class="form-control" formControlName="amount" >
+                                class="form-control" formControlName="amount" min="1">
                             </div>
                             <div class="col-2">
                                 <button type="button" class="btn btn-danger" (click)="deleteIngridient(i)">X</button>

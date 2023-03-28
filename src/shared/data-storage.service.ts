@@ -19,7 +19,8 @@ export class DataStorageService{
   storeRecipes(){
    const recipes= this.recipeService.getRecipes();
    const tokenId=JSON.parse(localStorage.getItem('userData'))._token;
-    this.http.put('https://shopping-list-8dbc3-default-rtdb.firebaseio.com/recipes.json?auth='+ tokenId,recipes)
+   const id=JSON.parse(localStorage.getItem('userData')).id;
+    this.http.put('https://shopping-list-8dbc3-default-rtdb.firebaseio.com/recipes/'+id+'.json?auth='+ tokenId,recipes)
     .subscribe((response)=>{
       console.log(response);
     })
@@ -27,10 +28,10 @@ export class DataStorageService{
 
   fetchRecipes(){
     const tokenId=JSON.parse(localStorage.getItem('userData'))._token;
-    this.http.get<Recipe[]>('https://shopping-list-8dbc3-default-rtdb.firebaseio.com/recipes.json',{
+    const id=JSON.parse(localStorage.getItem('userData')).id;
+    this.http.get<Recipe[]>('https://shopping-list-8dbc3-default-rtdb.firebaseio.com/recipes/'+id+'.json',{
       params:new HttpParams()
       .set('auth',tokenId)
-      // .set('$uid',uid)
     })
     .pipe(
       map(recipes => {   //rxjs operator

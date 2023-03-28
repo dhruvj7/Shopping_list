@@ -22,4 +22,12 @@ img{
     width: 100%;
     height: auto;
     position: relative;
+    padding-top: 20px;
 }
+
+@media screen and (min-width: 768px) {
+    .selectedItem:hover {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      border-radius: 7px;
+    }
+  }
