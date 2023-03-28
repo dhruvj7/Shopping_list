@@ -1,7 +1,7 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
-        <b><a class="navbar-brand" href="#">Recipe Book</a></b>
+        <b><a class="navbar-brand" href="#">The Recipe Book</a></b>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,18 +20,12 @@
               routerLinkActive="activeLink">Shopping list</a>
             </li>
           </ul>
-
-          <ul class="navbar-nav" *ngIf="isAuthenticated">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle navbar-right " href="#" 
-              role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Manage
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" style="cursor:pointer;" (click)="saveRecipes()">Save data to server</a></li>
-                <li><a class="dropdown-item" style="cursor:pointer;" (click)="fetchRecipes()">Get your recipes</a></li>
-                <li><a class="dropdown-item" style="cursor:pointer;" (click)="logout()">Logout</a></li>
-              </ul>
+          <ul class="navbar-nav mb-2 mb-lg-0" *ngIf="isAuthenticated">
+            <li class="nav-item rightLinks" >
+              <a class="nav-link" aria-current="page" style="cursor:pointer;" (click)="saveRecipes()">Save data to server</a>
+            </li>
+            <li class="nav-item rightLinks">
+              <a class="nav-link" aria-current="page" style="cursor:pointer;" (click)="logout()">Logout</a>
             </li>
           </ul>
         </div>

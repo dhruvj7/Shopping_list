@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataStorageService } from 'src/shared/data-storage.service';
 import { AuthService } from './auth/auth.service';
 
 @Component({   //decorator
@@ -8,10 +9,11 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
   title = 'shopping_list';
-  constructor(private authService:AuthService){}
+  constructor(private authService:AuthService, private dataStorageService :DataStorageService){}
 
   ngOnInit(){
     this.authService.autoLogin();
     this.authService.autoLogout();
+    this.dataStorageService.fetchRecipes();
   }
 }

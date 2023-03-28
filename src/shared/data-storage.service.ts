@@ -23,6 +23,7 @@ export class DataStorageService{
     this.http.put('https://shopping-list-8dbc3-default-rtdb.firebaseio.com/recipes/'+id+'.json?auth='+ tokenId,recipes)
     .subscribe((response)=>{
       console.log(response);
+      alert("Data succesfully stored on server")
     })
   }
 
