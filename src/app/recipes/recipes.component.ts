@@ -7,9 +7,10 @@ import { RecipeService } from './recipe.service';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent implements OnInit {
-  constructor(private _recipeService:RecipeService ) { }
+  constructor(private _recipeService:RecipeService, private dataStorageService : DataStorageService) { }
 
   ngOnInit(): void {
+    this.dataStorageService.fetchRecipes()
     // this._recipeService.selectedRecipe.subscribe(
     //   (recipeSelected)=>{ this.currentRecipe=recipeSelected}
     //   )

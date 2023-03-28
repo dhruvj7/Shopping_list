@@ -9,11 +9,10 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
   title = 'shopping_list';
-  constructor(private authService:AuthService, private dataStorageService :DataStorageService){}
+  constructor(private authService:AuthService){}
 
   ngOnInit(){
     this.authService.autoLogin();
     this.authService.autoLogout();
-    this.dataStorageService.fetchRecipes();
   }
 }

@@ -27,8 +27,6 @@ export class AuthComponent implements OnInit {
       this.router.navigate(['recipes'])
     }
   }
-
- 
   switchMode(){
     this.isLoginMode = !this.isLoginMode;
   }
