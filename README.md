@@ -1,27 +1,19 @@
-# ShoppingList
+# The Recipe Book
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+This project was built using Angular 14. To run it in your local pc copy source code , run npm-install command when in the project folder and to run the project give command ng-serve --o , this will start this project on localhost:4200.
 
-## Development server
+# About "The Recipe Book"
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+It allows the user to create and store their own recipes online with features to edit the recipe if needed in future or delete the exisiting one. The user is also given the privilege to maintain a shopping list in a seperate tab which can be downloaded anywhere in pdf format.
+The USP of this project is that all the ingredients required to make a recipe can be added in the shopping list in a single click which saves time and cubersome process of finding them.
 
-## Code scaffolding
+# Highlights
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Using angular 14 for making a fast single page application.
+2. Using ngRx for global state management.
+3. Angular routing ,route guards and lazy loading.
+4. Firebase with Cloud Functions for real-time data synchronization and handling complex back-end logic.
+5. Firebase authentication.
+6. Managing inter component interaction using angular services.
+7. Using PDF document generation library for server-side and client-side usage in pure TypeScript.
+8. Bootstrap for responsive elements.
